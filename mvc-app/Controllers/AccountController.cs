@@ -16,6 +16,11 @@ namespace mvc_app.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+            if (HttpContext.Session.GetString("UserName") != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
@@ -28,7 +33,7 @@ namespace mvc_app.Controllers
                 // Check if the username already existed in database.
                 if (_context.Users.Any(u => u.UserName == user.UserName))
                 {
-                    ModelState.AddModelError("Username", "Username is existed.");
+                    ModelState.AddModelError("UserName", "Username is existed.");
                     return View(user);
                 }
 
@@ -51,13 +56,17 @@ namespace mvc_app.Controllers
         // GET: Account/Login
         public IActionResult Login()
         {
+            if (HttpContext.Session.GetString("UserName") != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         // POST: Account/Login
         [HttpPost]
         public IActionResult Login(User user)
-        {
+        { 
             if (ModelState.IsValid)
             {
                 // Find user in the database
@@ -72,7 +81,7 @@ namespace mvc_app.Controllers
 
                 TempData["LoginError"] = "Username or password is invalid";
 
-            }
+            }            
             return View(user);
         }
 

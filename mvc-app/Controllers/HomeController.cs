@@ -10,7 +10,12 @@ namespace mvc_app.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetString("UserName") != null)
+            {
+                return View();
+            }
+
+            return RedirectToAction("Login", "Account");
         }
 
         public IActionResult Privacy()
