@@ -79,7 +79,7 @@ namespace mvc_app.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
-                TempData["LoginError"] = "Username or password is invalid";
+                TempData["LoginError"] = "Username or password is invalid!";
 
             }            
             return View(user);
