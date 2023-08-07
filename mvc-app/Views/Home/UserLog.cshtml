@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "User log";
+}
+
+<h2 class="text-center mb-3">Kiểm tra log thuê bao</h2>
+
+<div class="container w-75">
+    <form class="row mt-3">
+        <div class="col-6">
+            <label class="form-label">Nhập username</label>
+            <input class="form-control" /> 
+        </div>
+
+        <div class="col-3">
+            <label class="form-label">Ngày bắt đầu</label>
+            <input type="date" class="form-control" />
+        </div>
+
+        <div class="col-3">
+            <label class="form-label">Ngày kết thúc</label>
+            <input type="date" class="form-control" />
+        </div>
+
+        <div class="col-12 mt-3">
+            <button class="btn btn-primary" type="submit">Xác nhận</button>
+        </div>
+    </form>
+
+    <div id="response"></div>
+</div>
