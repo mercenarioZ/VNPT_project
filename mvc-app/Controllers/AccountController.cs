@@ -70,9 +70,9 @@ namespace mvc_app.Controllers
             if (ModelState.IsValid)
             {
                 // Find user in the database
-                var userInDb = _context.Users.FirstOrDefault(u => u.UserName == user.UserName && u.Password == user.Password);
+                var userInDb = _context.Users.FirstOrDefault(u => u.UserName == user.UserName);
 
-                if (userInDb != null)
+                if (userInDb != null && string.Equals(user.Password, userInDb.Password))
                 {
                     // Login successfully
                     HttpContext.Session.SetString("UserName", userInDb.UserName);
