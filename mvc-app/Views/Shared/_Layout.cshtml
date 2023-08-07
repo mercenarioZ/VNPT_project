@@ -34,7 +34,7 @@
                             </li>
                         </ul>
 
-                        <div class="navbar-nav flex-grow-1 justify-content-end align-items-center">
+                        <div class="navbar-nav flex-grow-1 justify-content-end">
                             <p class="m-3">Hello, @httpContext.Session.GetString("UserName")!</p>
                             <form class="" method="post" asp-controller="Account" asp-action="Logout" asp-antiforgery="true">
                                 <button class="btn btn-secondary" type="submit">Logout</button>
