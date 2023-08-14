@@ -40,7 +40,7 @@ namespace mvc_app.Controllers
             return RedirectToAction("Login", "Account");
         }
         [HttpPost]
-        public IActionResult UserLog(IFormCollection formCollection,string resultString)
+        public IActionResult UserLog(IFormCollection formCollection)
         {
             string arg = "";
             foreach (string key in formCollection.Keys)
@@ -49,12 +49,16 @@ namespace mvc_app.Controllers
                 // Response.WriteAsync(string.Format("", key));
                 arg += " " + formCollection[key];
             }
-            resultString = RunCMD(arg);
+            string resultString = RunCMD(arg);
+            var multiString = resultString.Split("\r\n");
             // Console.WriteLine(resultString);
             // _logger.Log(LogLevel.Debug,resultString);
             // _logger.LogWarning(resultString);
+            string User1;
+            User1 = (string?)formCollection["user"].FirstOrDefault()??"";
+            ViewData["User"] = User1;
             _logger.LogInformation(resultString);
-            return View((object)resultString);
+            return View((object)multiString);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

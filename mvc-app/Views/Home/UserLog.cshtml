@@ -1,4 +1,4 @@
-﻿@model string;
+﻿@model string[]
 @{
     ViewData["Title"] = "User log";
 }
@@ -27,8 +27,16 @@
         </div>
     </form>
 
-    <div id="response"></div>
-    <div>
-        @Model
+    <div id="response">
+        @if (Model != null)
+        {
+        <h3 style="margin-top: 5px;">Log List</h3>
+        <h4><strong>User: </strong>@ViewData["User"]</h4>
+            <ul>
+                @foreach (var item in @Model){
+                    <li style="margin-bottom: 5px;">@item</li>
+                };
+            </ul>
+        }
     </div>
 </div>

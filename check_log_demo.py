@@ -25,7 +25,7 @@ def tra_cuu_adsl_port(user):
     return rows[-1]
 
 def tra_log(user,name_host,ngay_bat_dau,ngay_ket_thuc,slot,pon,ont):
-    f = open(r'log_{}_{}_{}.txt'.format(user,ngay_bat_dau,ngay_ket_thuc),'w',encoding="utf-8")
+    # f = open(r'log_{}_{}_{}.txt'.format(user,ngay_bat_dau,ngay_ket_thuc),'w',encoding="utf-8")
     mydb = mysql.connector.connect(
     host="192.168.150.206",
     user="admin",
@@ -56,8 +56,8 @@ def tra_log(user,name_host,ngay_bat_dau,ngay_ket_thuc,slot,pon,ont):
 
     # result = result + f'\n\n\n****CHÚ THÍCH****\nReceived Dying Gasp: ONT mất nguồn/khách hàng tắt modem\nSignal Degraded: lỗi bit error chiều up của ONT\nRemote Defect Indication from ONT: lỗi bit error chiều down của ONT\nONT fails to respond to OMCI message requests/ONT VEIP Mismatch. ONT or LT did not accept the configuration requests for the VEIP: lỗi ONT không giao tiếp được với OLT/lỗi không đồng bộ cấu hình với OLT\nfiber is broken: ONT mất tín hiệu/lỗi quang\nONT is inactive: ONT mất tín hiệu/lỗi quang/ONT lỗi/ONT bị reboot\nloss of GEM/loss of frame: lỗi mất gói trên đường truyền\ndying-gasp: ONT mất nguồn/khách hàng tắt modem'
     # print(result)
-    f.write(result)
-    f.close()
+    # f.write(result)
+    # f.close()
     return result
 
 def main_check(user,ngay_bat_dau,ngay_ket_thuc):
